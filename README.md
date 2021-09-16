@@ -1,5 +1,6 @@
 # typelevel-playground 
 
+```haskell
 -- Create a Word
 foo :: Word 3
 foo = $(word "foo")
@@ -25,3 +26,4 @@ bar = head foo
 -- Does not compile:
 --moo :: Char
 --moo = head $(word "") 
+```
