@@ -1,4 +1,13 @@
-module Data.LengthParameterized.Word where
+module Data.LengthParameterized.Word 
+  ( Word
+  , (**)
+  , concat
+  , cons
+  , emptyWord
+  , fromChar
+  , head
+  , unsafeToWord
+  ) where
 
 import Data.Maybe
 import Data.String (singleton)
@@ -43,13 +52,6 @@ cons ch (Word str) = Word (singleton (codePointFromChar ch) <> str)
 
 infixr 5 cons as **
 
--- This is where it gets awkward: 
-hello :: Word D5
-hello = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
-
--- doesNotCompile :: Word D2
--- doesNotCompile = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
--- 
 -- Crashes at runtime if we try to create a Word of incorrect length
 unsafeToWord :: forall n. (Nat n) => String -> Word n
 unsafeToWord str =

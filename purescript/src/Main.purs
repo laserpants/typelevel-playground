@@ -15,5 +15,12 @@ cabbageRolls =
   in
     cabbage `concat` rolls
 
+-- This is where it gets awkward: 
+hello :: Word D5
+hello = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+
+-- doesNotCompile :: Word D2
+-- doesNotCompile = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+
 main :: Effect Unit
 main = pure unit
