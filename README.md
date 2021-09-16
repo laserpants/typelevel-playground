@@ -1,6 +1,18 @@
 # typelevel-playground 
 
+### Haskell
+
 ```haskell
+
+{-# LANGUAGE DataKinds       #-}
+{-# LANGUAGE TemplateHaskell #-}
+module Main where
+
+import GHC.TypeLits
+import Language.Haskell.TH
+import Data.LengthParameterized.Word
+import Prelude hiding (Word, concat, head)
+
 -- Create a Word
 foo :: Word 3
 foo = $(word "foo")
@@ -26,4 +38,30 @@ bar = head foo
 -- Does not compile:
 --moo :: Char
 --moo = head $(word "") 
+```
+
+### PureScript
+
+```purescript
+import Prelude
+
+import Data.LengthParameterized.Word
+import Data.Typelevel.Num
+import Effect (Effect)
+
+cabbageRolls :: Word D12
+cabbageRolls =
+  let
+    cabbage = unsafeToWord "cabbage" :: Word D7
+
+    rolls = unsafeToWord "rolls" :: Word D5
+  in
+    cabbage `concat` rolls
+
+-- This is where it gets awkward: 
+hello :: Word D5
+hello = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+
+-- doesNotCompile :: Word D2
+-- doesNotCompile = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
 ```
