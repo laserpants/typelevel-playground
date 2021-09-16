@@ -1,6 +1,6 @@
 name:                typelevel-playground
 version:             0.0.0.0
-github:              "githubuser/typelevel-playground"
+github:              "laserpants/typelevel-playground"
 license:             BSD3
 author:              "Heikki Johannes Hildén"
 maintainer:          "hildenjohannes@gmail.com"
