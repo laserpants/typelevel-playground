@@ -1,6 +1,32 @@
 # typelevel-playground 
 
-### Haskell
+### PureScript
+
+```purescript
+import Prelude
+
+import Data.LengthParameterized.Word
+import Data.Typelevel.Num
+import Effect (Effect)
+
+cabbageRolls :: Word D12
+cabbageRolls =
+  let
+    cabbage = unsafeToWord "cabbage" :: Word D7
+
+    rolls = unsafeToWord "rolls" :: Word D5
+  in
+    cabbage `concat` rolls
+
+-- This is where it gets awkward: 
+hello :: Word D5
+hello = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+
+-- doesNotCompile :: Word D2
+-- doesNotCompile = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+```
+
+### Haskell (with GHC extensions)
 
 ```haskell
 
@@ -40,28 +66,16 @@ bar = head foo
 --moo = head $(word "") 
 ```
 
-### PureScript
+### Idris
 
-```purescript
-import Prelude
+```
+module Main
 
-import Data.LengthParameterized.Word
-import Data.Typelevel.Num
-import Effect (Effect)
+import Data.LengthParameterized.Word 
 
-cabbageRolls :: Word D12
-cabbageRolls =
-  let
-    cabbage = unsafeToWord "cabbage" :: Word D7
+testWord1 : Word 3
+testWord1 = drop 3 (take 6 (fromString "cabbagerolls"))
 
-    rolls = unsafeToWord "rolls" :: Word D5
-  in
-    cabbage `concat` rolls
-
--- This is where it gets awkward: 
-hello :: Word D5
-hello = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
-
--- doesNotCompile :: Word D2
--- doesNotCompile = 'h' ** 'e' ** 'l' ** 'l' ** 'o' ** emptyWord
+main : IO ()
+main = print testWord1
 ```
