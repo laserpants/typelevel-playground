@@ -1,0 +1,7 @@
+package typelevel-playground
+
+modules = Data.LengthParameterized.Word
+
+main = Main
+
+sourcedir = "src"
