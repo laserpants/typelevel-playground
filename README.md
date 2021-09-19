@@ -68,7 +68,7 @@ bar = head foo
 
 ### Idris
 
-```
+```idris
 module Main
 
 import Data.LengthParameterized.Word 
