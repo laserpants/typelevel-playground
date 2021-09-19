@@ -66,7 +66,7 @@ bar = head foo
 --moo = head $(word "") 
 ```
 
-### Idris
+### Idris 2
 
 ```idris
 module Main
